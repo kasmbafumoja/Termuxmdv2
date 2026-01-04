@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/pair",
-      "destination": "http://fr2.spaceify.eu:25545/pair"
+      "destination": "http://143.105.215.107:25545/pair"
     }
   ]
 }
