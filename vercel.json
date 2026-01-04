@@ -1,8 +1,9 @@
 {
+  "version": 2,
   "rewrites": [
     {
       "source": "/pair",
-      "destination": "http://IP_DE_TON_PANEL:3000/pair"
+      "destination": "http://fr2.spaceify.eu:25545/pair"
     }
   ]
 }
