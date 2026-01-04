@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMUX-MD PAIRING</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            border: 1px solid #00ff00;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+        input {
+            background: #111;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        button:hover { background: #00cc00; }
+        #pair-code {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>[ TERMUX-MD ]</h1>
+        <p>ENTREZ VOTRE NUMÉRO (INDICATIF INCLUS)</p>
+        <input type="text" id="phone" placeholder="ex: 224620000000">
+        <br>
+        <button onclick="getCode()">Générer le code</button>
+        <div id="pair-code"></div>
+    </div>
+
+    <script>
+        async function getCode() {
+            const num = document.getElementById('phone').value;
+            const display = document.getElementById('pair-code');
+            display.innerText = "GÉNÉRATION...";
+            try {
+                const response = await fetch('/pair?number=' + num);
+                const data = await response.json();
+                display.innerText = data.code || "ERREUR";
+            } catch (err) {
+                display.innerText = "PANEL HORS LIGNE";
+            }
+        }
+    </script>
+</body>
+</html>
