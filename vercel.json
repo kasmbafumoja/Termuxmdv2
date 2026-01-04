@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/pair",
+      "destination": "http://IP_DE_TON_PANEL:3000/pair"
+    }
+  ]
+}
